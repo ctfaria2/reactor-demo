@@ -122,7 +122,7 @@ class ReactorContextController {
 }
 
 private fun createDemoResponse(context: Context): ContextResponse {
-    return if (context.isEmpty) {
+    return if (context.isEmpty || !context.hasKey("key")) {
         ContextResponse.Empty()
     } else {
         ContextResponse.HasValue(context)
