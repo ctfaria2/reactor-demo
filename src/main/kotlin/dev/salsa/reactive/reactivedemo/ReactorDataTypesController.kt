@@ -12,7 +12,7 @@ import reactor.kotlin.core.publisher.toFlux
 @RestController
 class ReactorDataTypesController {
 
-    @GetMapping("/api/suspend/mono-no-wait")
+    @GetMapping("/api/types/mono-no-wait")
     fun mono(): Mono<String> {
         //mono is a reactive type that represents a list of 1 or 0 items.
         return Mono.just("I am a value")
@@ -22,7 +22,7 @@ class ReactorDataTypesController {
     }
 
     //Same as above but using suspend
-    @GetMapping("/api/suspend/mono-wait")
+    @GetMapping("/api/types/mono-wait")
     suspend fun waitForMono(): String {
         val mono = Mono.just("I am a value")
         // awaitSingle is a non-blocking function that bridges from a mono to a more imperative style code. It allows us
@@ -32,7 +32,7 @@ class ReactorDataTypesController {
         return "$string and i was changed in a nicer way"
     }
 
-    @GetMapping("/api/suspend/flux-no-wait")
+    @GetMapping("/api/types/flux-no-wait")
     fun flux(): Flux<String> {
         //flux is a reactive type that represents a list of 0 to many items.
         return listOf(
@@ -42,7 +42,7 @@ class ReactorDataTypesController {
         ).toFlux()
     }
 
-    @GetMapping("/api/suspend/flux-wait")
+    @GetMapping("/api/types/flux-wait")
     suspend fun waitForFlux(): List<String> {
         val fluxList = listOf(
         "Steve",
